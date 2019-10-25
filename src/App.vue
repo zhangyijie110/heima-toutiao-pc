@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    hm-toutiap-pc
-    <el-button type="success">成功按钮</el-button>
+    <!-- 一级路由 -->
+    <router-view />
   </div>
 </template>
 
