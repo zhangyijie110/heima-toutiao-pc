@@ -29,8 +29,8 @@
     </el-card>
   </div>
 </template>
-
 <script>
+import local from '@/utils/local'
 export default {
   data () {
     // 校验手机号函数
@@ -44,8 +44,8 @@ export default {
     }
     return {
       LoginForm: {
-        mobile: '',
-        code: ''
+        mobile: '13185858585',
+        code: '246810'
       },
       LoginRules: {
         mobile: [
@@ -65,14 +65,17 @@ export default {
       this.$refs['loginForm'].validate(valid => {
         if (valid) {
           // 校验成功  进行登录（发请求）
+
           this.$http
             .post('authorizations', this.LoginForm)
             .then(res => {
-              // 成功
+              // 成功 res 是响应对象
+              // 保存用户信息(token)
+              local.setUser(res.data.data)
               this.$router.push('/')
             })
             .catch(() => {
-              // 失败
+              // 失败 提示反反复复
               this.$message.error('手机号或验证码错误')
             })
         }

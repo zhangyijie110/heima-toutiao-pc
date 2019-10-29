@@ -1,6 +1,8 @@
 import VueRouter from 'vue-router'
 import Vue from 'vue'
 
+import local from '@/utils/local'
+
 import Login from '@/views/login'
 import Home from '@/views/home'
 
@@ -33,6 +35,12 @@ const router = new VueRouter({
     }
 
   ]
+})
+// 路由导航守卫(前置导航守卫)
+router.beforeEach((to, form, next) => {
+  const user = local.getUser()
+  if (to.path !== '/login' && !user) return next('/login')
+  next()
 })
 
 export default router
