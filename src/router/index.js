@@ -6,6 +6,8 @@ import local from '@/utils/local'
 import Login from '@/views/login'
 import Home from '@/views/home'
 
+import Article from '@/views/article'
+
 import Welcome from '@/views/welcome'
 import NotFound from '@/views/404'
 Vue.use(VueRouter)
@@ -26,6 +28,9 @@ const router = new VueRouter({
       children: [{
         path: '/',
         component: Welcome
+      },
+      { path: '/article',
+        component: Article
       }]
     },
     // 404处理
