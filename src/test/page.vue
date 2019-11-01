@@ -1,11 +1,11 @@
 <template>
   <div class="page">
     <!-- 头 -->
-    <p></p>
+    <p>header</p>
     <!-- 内容 -->
     <div>
       <!-- 默认插槽 -->
-      <slot name="content"></slot>
+      <slot name="content"  :pn='pageName' test="测试"></slot>
     </div>
     <!-- 尾 -->
     <p>
