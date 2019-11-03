@@ -21,14 +21,8 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="频道：">
-          <el-select v-model="reqParams.channel_id" placeholder="请选择" clearable>
-            <el-option
-              v-for="item in channelOptions"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id"
-            ></el-option>
-          </el-select>
+          <!-- 使用频道组件 -->
+          <my-channel v-model="reqParams.channel_id"></my-channel>
         </el-form-item>
         <el-form-item label="日期：">
           <!-- v-model 绑定的值是[起始日期,结束日期] -->
@@ -116,7 +110,7 @@ export default {
       // 由axios进行数据提交，字段的值null，axios是不会提交该字段
       reqParams: {
         status: null,
-        channel_id: null,
+        channel_id: 2,
         begin_pubdate: null,
         end_pubdate: null,
         // 当前页码
