@@ -13,6 +13,7 @@ import NotFound from '@/views/404'
 import Image from '@/views/image'
 import Publish from '@/views/publish'
 import Comment from '@/views/comment'
+import Setting from '@/views/setting'
 
 Vue.use(VueRouter)
 
@@ -53,6 +54,11 @@ const router = new VueRouter({
       {
         path: '/comment',
         component: Comment
+      },
+      // 个人设置
+      {
+        path: '/setting',
+        component: Setting
       }
       ]
     },
