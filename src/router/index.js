@@ -12,6 +12,7 @@ import Welcome from '@/views/welcome'
 import NotFound from '@/views/404'
 import Image from '@/views/image'
 import Publish from '@/views/publish'
+import Comment from '@/views/comment'
 
 Vue.use(VueRouter)
 
@@ -33,22 +34,29 @@ const router = new VueRouter({
         path: '/',
         component: Welcome
       },
-      // 内容
+      // 内容管理
       {
         path: '/article',
         component: Article
       },
+      // 素材管理
       {
         path: '/image',
         component: Image
       },
+      // 发布文章
       {
         path: '/publish',
         component: Publish
+      },
+      // 评论管理
+      {
+        path: '/comment',
+        component: Comment
       }
       ]
     },
-    // 404处理
+    // 404处理 匹配 不符合路由规则的路径
     {
       path: '*',
       component: NotFound
@@ -58,7 +66,12 @@ const router = new VueRouter({
 })
 // 路由导航守卫(前置导航守卫)
 router.beforeEach((to, form, next) => {
+  // 当每次跳转路由前触发
+  // to 跳转到目标 路由对象
+  // from 从哪里跳转过来 路由对象
+  // next 下一步方法 next()旅行 next('/login') 拦截
   const user = local.getUser()
+  // 如果登录
   if (to.path !== '/login' && !user) return next('/login')
   next()
 })
