@@ -58,8 +58,8 @@
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item icon="el-icon-setting" command='setting'>个人设置</el-dropdown-item>
-            <el-dropdown-item icon="el-icon-unlock" command='logout'>退出登录</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-setting" command="setting">个人设置</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-unlock" command="logout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </el-header>
@@ -73,6 +73,7 @@
 
 <script>
 import local from '@/utils/local'
+import eventBus from '@/eventBus'
 export default {
   data () {
     return {
@@ -82,7 +83,6 @@ export default {
       photo: '',
       // 名称
       name: ''
-
     }
   },
   methods: {
@@ -105,6 +105,14 @@ export default {
     const user = local.getUser() || {}
     this.photo = user.photo
     this.name = user.name
+    // 绑定事件 updateName
+    eventBus.$on('updateName', name => {
+      this.name = name
+    })
+    // 绑定事件 updatePhoto
+    eventBus.$on('updatePhoto', photo => {
+      this.photo = photo
+    })
   }
 }
 </script>
