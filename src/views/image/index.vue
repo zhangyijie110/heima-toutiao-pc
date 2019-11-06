@@ -127,6 +127,7 @@ export default {
       } = await this.$http.get('user/images', { params: this.reqParams })
       // 赋值给images
       this.images = data.results
+      // 总条数赋值
       this.total = data.total_count
     },
     pager (newPage) {
