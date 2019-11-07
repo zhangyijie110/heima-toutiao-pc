@@ -14,6 +14,7 @@ import Image from '@/views/image'
 import Publish from '@/views/publish'
 import Comment from '@/views/comment'
 import Setting from '@/views/setting'
+import Fans from '@/views/fans'
 
 Vue.use(VueRouter)
 
@@ -59,6 +60,11 @@ const router = new VueRouter({
       {
         path: '/setting',
         component: Setting
+      },
+      // 粉丝管理
+      {
+        path: '/fans',
+        component: Fans
       }
       ]
     },
